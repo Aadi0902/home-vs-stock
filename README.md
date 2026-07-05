@@ -61,14 +61,35 @@ ZIP prefix, not exact per-ZIP data — override with local comps. See
 
 ## What's tunable
 
-ZIP code (auto-fill), home price, down payment %, buy/sell closing costs, holding
-horizon, mortgage rate & term, property tax, insurance, PMI, maintenance, HOA,
-roommate rent + **how many months you'll keep roommates** + growth + vacancy +
-tax, **your current rent** + growth, **take-home income + living-expense % +
-income growth**, **% of surplus paid to extra mortgage principal vs. invested**,
-S&P 500 expected return & volatility, home appreciation & volatility, stock–home
-correlation, inflation, capital-gains taxes, the §121 home-sale exclusion, and
-the mortgage-interest / property-tax deduction (with SALT cap).
+ZIP code (auto-fill), home price, **savings pool (% of price)**, down payment %,
+buy/sell closing costs, holding horizon, mortgage rate & term, property tax,
+insurance, PMI, maintenance, HOA, roommate rent + **how many months you'll keep
+roommates** + growth + vacancy + tax, **your current rent** + growth, **take-home
+income + living-expense % + income growth**, **% of surplus paid to extra mortgage
+principal vs. invested**, an optional **life-transition point** (roommates leave /
+income rises / rent changes), S&P 500 expected return & volatility, home
+appreciation & volatility, stock–home correlation, inflation, capital-gains taxes,
+the §121 home-sale exclusion, and the mortgage-interest / property-tax deduction
+(with SALT cap).
+
+### Affordability & the monthly-payment breakdown
+
+The main page shows a **pie chart** of your monthly payment (P&I, property tax,
+insurance, maintenance, HOA, PMI) and a ledger that nets out roommate income and
+the tax deduction to your **true out-of-pocket cost** — which is exactly what the
+model subtracts from your disposable income each month. An **affordability gate**
+flags the purchase as unaffordable if the down payment + closing exceeds your
+savings, or if net housing exceeds your after-expense income.
+
+### The savings pool (why the optimizer is realistic)
+
+You set a fixed savings pool. Buying spends the down payment + closing out of it;
+**whatever's left is invested**, and the renter invests the whole pool. So a
+smaller down payment isn't free — it just shifts cash from home equity into
+stocks. This bounds the optimizer to money you actually have (no "100%-cash"
+nonsense) and makes "5% down + invest the rest vs. 20% down" a real comparison.
+The optimizer also sweeps the **affordable home price** and tells you the priciest
+home that still beats renting.
 
 ### Pay-down vs. invest
 
