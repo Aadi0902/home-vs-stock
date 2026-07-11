@@ -956,7 +956,7 @@ with tab_sens:
 # TAB 5 — Data & assumptions
 # ===========================================================================
 with tab_data:
-    st.markdown("""
+    st.markdown(r"""
 #### Where the default numbers come from (mid-2026, U.S.)
 
 | Input | Default | Source / basis |
